@@ -264,8 +264,35 @@ body {
   display: none;
 }
 .card-section.is-active {
+  overflow-y: scroll;
   display: block;
   animation: fadeIn 0.6s both;
+}
+
+.card-section.is-active {
+  --sb-track-color: #f5f5f5;
+  --sb-thumb-color: #000000;
+  --sb-size: 2px;
+}
+
+.card-section.is-active::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.card-section.is-active::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+.card-section.is-active::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .card-section.is-active {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
 }
 
 @keyframes fadeIn {
